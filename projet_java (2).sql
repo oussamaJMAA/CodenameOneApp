@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 13 mai 2022 à 14:55
+-- Généré le : ven. 13 mai 2022 à 18:21
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -139,9 +139,9 @@ CREATE TABLE `commande` (
 --
 
 INSERT INTO `commande` (`id`, `nbproduit`, `date`, `methodedepaiement`, `etat`, `prixtotale`, `user_id`) VALUES
-(2, 7, '2022-05-13', 'Espece', 'En cours', 55, NULL),
+(2, 7, '2022-05-13', 'Espece', 'annulé', 55, NULL),
 (3, 1, '2022-05-11', 'Cheque', 'En cours', 20, NULL),
-(4, 1, '2022-05-11', 'Cheque', 'En cours', 20, NULL),
+(4, 1, '2022-05-11', 'Cheque', 'livré', 20, NULL),
 (6, 3, '2022-07-11', 'Espece', 'terminé', 95, NULL),
 (7, 2, '2022-05-11', 'Cheque', 'terminé', 110, NULL),
 (8, 2, '2022-05-11', 'Cheque', 'terminé', 110, NULL),
@@ -358,15 +358,6 @@ CREATE TABLE `message` (
   `is_read` tinyint(1) NOT NULL,
   `deleted_from` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `message`
---
-
-INSERT INTO `message` (`id`, `sender_id`, `recipient_id`, `title`, `message`, `created_at`, `is_read`, `deleted_from`) VALUES
-(36, 156, 183, 'test', 'helo', '2022-05-12 02:42:08', 1, NULL),
-(37, 156, 183, 'test', 'hello', '2022-05-12 14:06:25', 0, NULL),
-(38, 183, 156, 'test', 'heyy', '2022-05-12 14:45:09', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -621,11 +612,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `gender`, `address`, `phone`, `nationality`, `image`, `equipe`, `created_at`, `roles`, `is_verified`, `unread_m`, `last_login`, `is_social`, `role`, `java_password`, `password2`) VALUES
-(156, 'Roukaia', 'Khelifi', 'Roukaia Khelifi', 'roukaia70@gmail.com', NULL, 'female', NULL, 9998999, NULL, 'https://lh3.googleusercontent.com/a-/AOh14GjwOXm1gvkcI0yNH9c5dkNXCsa4o49yrdnCdtO8uw=s96-c', NULL, '2022-05-06 15:46:05', '[\"ROLE_ADMIN\"]', 0, NULL, '2022-05-13 01:43:31', 1, 'admin', NULL, NULL),
 (183, NULL, NULL, 'oussama55', 'roukaia.khelifi@esprit.tn', '$2a$12$iRA0ZOQ3YhN.eBXtBPZCUu8CGx5Zhc6XzLxXeGNAD9tvQjV0pWWWC', 'female', NULL, 96566945, NULL, '90d52bc7aad7b75d4dd478318c8d2883.png', NULL, '2022-05-12 02:41:33', '[\"ROLE_ADMIN\"]', 0, NULL, '2022-05-12 14:44:39', NULL, 'admin', NULL, NULL),
-(198, 'oussama', 'jmaa', 'oussama589', 'jemaaoussama64@gmail.com', '$2a$12$PZv02SAP5L9RDSfPBsiPKuE5bv22K8/gKVHdFbA1euUMuYZArW9YW', 'female', 'nabeul', 22658131, 'Tunisia', 'C:\\Users\\oussa\\Desktop\\avatar.png', NULL, '2022-05-13 00:49:22', '[\"ROLE_USER\"]', NULL, NULL, '2022-05-13 01:49:59', NULL, 'client', NULL, NULL),
+(198, 'oussama', 'jmaa', 'oussama589', 'jemaaoussama64@gmail.com', '$2a$12$PZv02SAP5L9RDSfPBsiPKuE5bv22K8/gKVHdFbA1euUMuYZArW9YW', 'female', 'nabeul', 22658131, 'Tunisia', 'f13ef7d394c88cb68fbb7e2c00769662.jpeg', NULL, '2022-05-13 00:49:22', '[\"ROLE_USER\"]', 1, NULL, '2022-05-13 01:49:59', NULL, 'client', NULL, NULL),
 (201, 'oussama', 'jmaa', 'oussama111', 'oussama.jmaa@esprit.tn', '$2a$12$dAJuh/3YQkUk4AWc0kALtuYgc9pmJXXMLCKVY63uO7FCriYJMNZye', 'female', 'nabeul', 22658131, 'Tunisia', 'C:\\Users\\oussa\\Desktop\\avatar.png', NULL, '2022-05-13 11:36:52', '[\"ROLE_USER\"]', 1, NULL, '2022-05-13 12:38:57', NULL, 'admin', 'Azerty1234@', NULL),
-(202, NULL, NULL, 'oussama5555', 'fatimafatouma784@gmail.com', '$2y$13$Jqtt8YwWfyMK/r8teJeqSODqSjnyJUB.qa3V5OjVVZyL2X56/2zI.', 'male', NULL, NULL, NULL, 'C:\\Users\\oussa\\Desktop\\avatar.png', NULL, '2022-05-13 12:47:31', '[\"ROLE_USER\"]', 0, NULL, NULL, NULL, 'admin', 'Azerty1234@', NULL);
+(205, 'oussama', 'jmaa', 'oussama0022', 'roukaia70@gmail.com', '$2a$12$ap/kPVjBqfgmUwVzmOdtGeKagdiKMASiHGtZzy4BWJW9w9mzBi2Nu', 'Male', 'nabeul', 22658131, 'Tunisia', 'C:\\Users\\oussa\\Desktop\\avatar.png', NULL, '2022-05-13 14:09:04', '[\"ROLE_ADMIN\"]', 0, NULL, '2022-05-13 16:42:09', NULL, 'admin', 'Azerty1234@', NULL);
 
 --
 -- Index pour les tables déchargées
@@ -908,7 +898,7 @@ ALTER TABLE `trash`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 
 --
 -- Contraintes pour les tables déchargées
